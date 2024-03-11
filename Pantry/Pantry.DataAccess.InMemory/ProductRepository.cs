@@ -61,7 +61,7 @@ namespace Pantry.DataAccess.InMemory
 
     public IQueryable<Product> Collection()
     {
-      return products.AsQueryable
+            return products.AsQueryable();
     }
 
     public void Delete(string ID)
