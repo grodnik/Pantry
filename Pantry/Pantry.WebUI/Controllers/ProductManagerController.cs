@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Pantry.Core.Models;
+using Pantry.Core.ViewModels;
 using Pantry.DataAccess.InMemory;
 
 namespace Pantry.WebUI.Controllers
@@ -11,10 +12,12 @@ namespace Pantry.WebUI.Controllers
     public class ProductManagerController : Controller
     {
         ProductRepository context;
+        ProductTypeRepository productTypes;
 
         public ProductManagerController()
         {
             context = new ProductRepository();
+            productTypes = new ProductTypeRepository(); 
         }
 
         // GET: ProductManager
@@ -26,8 +29,11 @@ namespace Pantry.WebUI.Controllers
 
         public ActionResult Create()
         {
-            Product product = new Product();
-            return View(product);
+            ProductManagerViewModel viewModel = new ProductManagerViewModel();
+
+            viewModel.Product = new Product();
+            viewModel.ProductTypes = productTypes.Collection();
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -55,7 +61,11 @@ namespace Pantry.WebUI.Controllers
             }
             else
             {
-                return View(product);
+                ProductManagerViewModel viewModel = new ProductManagerViewModel();
+                viewModel.Product = product;
+                viewModel.ProductTypes = productTypes.Collection();
+
+                return View(viewModel);
             }
         }
 
