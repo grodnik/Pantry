@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace Pantry.Core.Models
 {
-  public class Product
+  public class Product : BaseEntity
   {
-    public string ID {  get; set; }
-
     [StringLength(30)]
     [DisplayName("Item Name")]
     public string Name { get; set; }
@@ -23,9 +21,5 @@ namespace Pantry.Core.Models
     [Range(0,100)]
     public decimal Price { get; set; }
 
-    public Product()
-    {
-      this.ID = Guid.NewGuid().ToString();
-    }
   }
 }

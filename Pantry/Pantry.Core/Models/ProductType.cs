@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 namespace Pantry.Core.Models
 
 {
-    public class ProductType 
+    public class ProductType : BaseEntity 
     { 
-        public string ID {  get; set; }
         public string Type { get; set; }
 
-        public ProductType() { 
-            this.ID = Guid.NewGuid().ToString();
-        }
     }
 
 }

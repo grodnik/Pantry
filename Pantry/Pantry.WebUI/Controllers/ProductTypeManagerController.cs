@@ -10,11 +10,11 @@ namespace Pantry.WebUI.Controllers
 {
     public class ProductTypeManagerController : Controller
     {
-        ProductTypeRepository context;
+        InMemoryRepository<ProductType> context;
 
         public ProductTypeManagerController()
         {
-            context = new ProductTypeRepository();
+            context = new InMemoryRepository<ProductType>();
         }
 
         // GET: ProductTypeManager
