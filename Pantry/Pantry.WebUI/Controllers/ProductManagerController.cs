@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Pantry.Core.Contracts;
 using Pantry.Core.Models;
 using Pantry.Core.ViewModels;
 using Pantry.DataAccess.InMemory;
@@ -11,13 +12,13 @@ namespace Pantry.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        InMemoryRepository<Product> context;
-        InMemoryRepository<ProductType> productTypes;
+        IRepository<Product> context;
+        IRepository<ProductType> productTypes;
 
-        public ProductManagerController()
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductType> productTypeContext)
         {
-            context = new InMemoryRepository<Product>();
-            productTypes = new InMemoryRepository<ProductType>(); 
+            context = productContext;
+            productTypes = productTypeContext; 
         }
 
         // GET: ProductManager

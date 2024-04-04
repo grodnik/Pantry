@@ -1,4 +1,5 @@
-﻿using Pantry.Core.Models;
+﻿using Pantry.Core.Contracts;
+using Pantry.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Pantry.DataAccess.InMemory
 {
-    public class InMemoryRepository<T> where T : BaseEntity
-     {
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
+    {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
         string className;
@@ -29,12 +30,12 @@ namespace Pantry.DataAccess.InMemory
             cache[className] = items;
         }
 
-        public void Insert (T t)
+        public void Insert(T t)
         {
             items.Add(t);
         }
 
-        public void Update (T t)
+        public void Update(T t)
         {
             T tToUpdate = items.Find(i => i.ID == t.ID);
 
