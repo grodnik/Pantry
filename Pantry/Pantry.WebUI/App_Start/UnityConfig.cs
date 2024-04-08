@@ -1,6 +1,7 @@
 using Pantry.Core.Contracts;
 using Pantry.Core.Models;
 using Pantry.DataAccess.InMemory;
+using Pantry.DataAccess.SQL;
 using System;
 
 using Unity;
@@ -45,8 +46,8 @@ namespace Pantry.WebUI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IRepository<Product>, InMemoryRepository<Product>>();
-            container.RegisterType<IRepository<ProductType>, InMemoryRepository<ProductType>>();
+            container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
+            container.RegisterType<IRepository<ProductType>, SQLRepository<ProductType>>();
         }
     }
 }

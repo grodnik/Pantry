@@ -14,7 +14,7 @@ namespace Pantry.DataAccess.SQL
         { 
         }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductType> ProductType { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
 
 
     }
